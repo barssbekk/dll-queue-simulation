@@ -239,7 +239,7 @@ int main() {
 
     // value = rand() % (MAX-MIN+1) + MIN;
     // int randNameIndex = rand() % (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
-    int prob = rand() % MAX_PROB + MIN_PROB;
+    // int prob = rand() % MAX_PROB + MIN_PROB;
 
     cout << "Store opens: \n";
     for (int minute = 1; minute <= MAX_MINUTES; ++minute) {
@@ -252,9 +252,12 @@ int main() {
             cout << "\tResulting line:\n";
             line.print(names);
         } else {
+            int prob = rand() % MAX_PROB + MIN_PROB;
             cout << "Time step #" << minute << ":\n";
-            cout << '\t' << names.at(line.getFront()) << " is served\n";
-            line.pop_front();
+            if (prob <= 40) {
+                cout << '\t' << names.at(line.getFront()) << " is served\n";
+                line.pop_front();
+            }
             cout << "\tResulting line:\n";
             line.print(names);
         }
