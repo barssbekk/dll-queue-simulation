@@ -186,7 +186,7 @@ public:
             return;
         }
         while (current) {
-            cout << '\t' << names.at(current->data) << '\n';
+            cout << "    " << '\t' << names.at(current->data) << '\n';
             current = current->next;
         }
         cout << endl;
@@ -211,7 +211,6 @@ int main() {
     srand(time(0));
 
     const int MAX_MINUTES = 20;
-
 
     DoublyLinkedList line;
 
