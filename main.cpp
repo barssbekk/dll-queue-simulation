@@ -2,6 +2,7 @@
 #include <ctime>
 #include <vector>
 #include <fstream>
+#include <string>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -233,9 +234,12 @@ int main() {
 
     const int MIN_NAME_INDEX = 0;
     const int MAX_NAME_INDEX = names.size() - 1;
+    const int MIN_PROB = 1;
+    const int MAX_PROB = 100;
 
     // value = rand() % (MAX-MIN+1) + MIN;
     // int randNameIndex = rand() % (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
+    int prob = rand() % MAX_PROB + MIN_PROB;
 
     cout << "Store opens: \n";
     for (int minute = 1; minute <= MAX_MINUTES; ++minute) {
@@ -251,8 +255,9 @@ int main() {
             cout << "Time step #" << minute << ":\n";
             cout << '\t' << names.at(line.getFront()) << " is served\n";
             line.pop_front();
+            cout << "\tResulting line:\n";
+            line.print(names);
         }
-
     }
 
 
