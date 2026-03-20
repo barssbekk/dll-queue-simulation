@@ -179,14 +179,14 @@ public:
             delete temp;
         }
     }
-    void print() {
+    void print(vector<string>& names) {
         Node* current = head;
         if (!current) {
             cout << "List is empty." << endl;
             return;
         }
         while (current) {
-            cout << current->data << " ";
+            cout << '\t' << names.at(current->data) << '\n';
             current = current->next;
         }
         cout << endl;
@@ -240,10 +240,13 @@ int main() {
             for (int i = 0; i < 5; ++i) {
                 int randNameIndex = rand() % (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
                 line.push_back(randNameIndex);
+                cout << '\t' << names.at(randNameIndex) << " joins the line\n";
+                // cout << "\tResulting line:\n";
+                // line.print(names);
             }
+            cout << "\tResulting line:\n";
+            line.print(names);
         }
-        //line.push_back(randNameIndex);
-        // line.print();
     }
 
 
