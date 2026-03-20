@@ -252,10 +252,6 @@ int main() {
     const int MIN_PROB = 1;
     const int MAX_PROB = 100;
 
-    // value = rand() % (MAX-MIN+1) + MIN;
-    // int randNameIndex = rand() % (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
-    // int prob = rand() % MAX_PROB + MIN_PROB;
-
     cout << "Store opens: \n";
     for (int minute = 1; minute <= MAX_MINUTES; ++minute) {
         if (minute == 1) { // Period ONE
@@ -298,9 +294,15 @@ int main() {
                 int size = line.getSize();
                 if (size > 0){ // (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
                     int positionToRemove = rand() % size + 1;
-                    cout << names.at(positionToRemove) << " (at the rear) left the line\n";
+                    cout << '\t' << "Random person left the line\n";
                     line.delete_pos(positionToRemove);
                 }
+            }
+            int probFive = rand() % MAX_PROB + MIN_PROB;
+            if (probFive <= 10) {
+                int randNameIndex = rand() % (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
+                line.push_front(randNameIndex);
+                cout << '\t' << names.at(randNameIndex) << " (VIP) joins the front of the line\n";
             }
         }
         cout << "\tResulting line:\n";
