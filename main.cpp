@@ -204,6 +204,11 @@ public:
         }
         cout << endl;
     }
+
+    int getFront() {
+        if (!head) return 2;
+        return head->data;
+    }
 };
 
 int main() {
@@ -232,7 +237,6 @@ int main() {
     // value = rand() % (MAX-MIN+1) + MIN;
     // int randNameIndex = rand() % (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
 
-
     cout << "Store opens: \n";
     for (int minute = 1; minute <= MAX_MINUTES; ++minute) {
         if (minute == 1) { // Period ONE
@@ -243,11 +247,12 @@ int main() {
             }
             cout << "\tResulting line:\n";
             line.print(names);
+        } else {
+            cout << "Time step #" << minute << ":\n";
+            cout << '\t' << names.at(line.getFront()) << " is served\n";
+            line.pop_front();
         }
 
-        if (minute == 2) { // Period TWO
-            cout << "Time step #2:\n";
-        }
     }
 
 
