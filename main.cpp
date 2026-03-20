@@ -264,20 +264,16 @@ int main() {
                 line.push_back(randNameIndex);
                 cout << '\t' << names.at(randNameIndex) << " joins the line\n";
             }
-            cout << "\tResulting line:\n";
-            line.print(names);
         } else {
             cout << "Time step #" << minute << ":\n";
 
             int probOne = rand() % MAX_PROB + MIN_PROB;
             // 40% serve
-            if (probOne <= 40 && line.getFront() > -1) {
+            if (probOne <= 40 && line.getFront() != -1) {
                 const int index = line.getFront();
                 cout << '\t' << names.at(index) << " is served\n";
                 line.pop_front();
             }
-            cout << "\tResulting line:\n";
-            line.print(names);
 
             // 60%
             int probTwo = rand() % MAX_PROB + MIN_PROB;
@@ -289,7 +285,7 @@ int main() {
 
             // 20%
             int probThree = rand() % MAX_PROB + MIN_PROB;
-            if (probThree <= 20) {
+            if (probThree <= 20 && line.getBack() != -1) {
                 const int index = line.getBack();
                 cout << '\t' << names.at(index) << " (at the rear) "
                                                 << "left the line\n";
@@ -299,15 +295,17 @@ int main() {
             // 10%
             int probFour = rand() % MAX_PROB + MIN_PROB;
             if (probFour <= 10) {
-                if (line.getSize() > 0) {
-                    int positionToRemove = rand() % ()
+                int size = line.getSize();
+                if (size > 0){ // (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
+                    int positionToRemove = rand() % size + 1;
+                    cout << names.at(positionToRemove) << " (at the rear) left the line\n";
+                    line.delete_pos(positionToRemove);
                 }
             }
         }
+        cout << "\tResulting line:\n";
+        line.print(names);
     }
-
-
-    // count test
 
     return 0;
 }
