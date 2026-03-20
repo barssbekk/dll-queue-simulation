@@ -235,16 +235,18 @@ int main() {
 
     cout << "Store opens: \n";
     for (int minute = 1; minute <= MAX_MINUTES; ++minute) {
-        if (minute == 1) {
+        if (minute == 1) { // Period ONE
             for (int i = 0; i < 5; ++i) {
                 int randNameIndex = rand() % (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
                 line.push_back(randNameIndex);
                 cout << '\t' << names.at(randNameIndex) << " joins the line\n";
-                // cout << "\tResulting line:\n";
-                // line.print(names);
             }
             cout << "\tResulting line:\n";
             line.print(names);
+        }
+
+        if (minute == 2) { // Period TWO
+            cout << "Time step #2:\n";
         }
     }
 
