@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -212,6 +213,12 @@ int main() {
     const int MAX_MINUTES = 20;
 
     DoublyLinkedList line;
+
+    ifstream fileInput{"names.txt"};
+    if (!fileInput) {
+        cerr << "File not found";
+        return 1;
+    }
 
     vector<string> names;
 
