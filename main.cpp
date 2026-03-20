@@ -215,6 +215,16 @@ public:
         if (!tail) return -1;
         return tail->data;
     }
+
+    int getSize() {
+        int count = 0;
+        Node* current = head;
+        while (current) {
+            ++count;
+            current = current->next;
+        }
+        return count;
+    }
 };
 
 int main() {
@@ -289,11 +299,14 @@ int main() {
             // 10%
             int probFour = rand() % MAX_PROB + MIN_PROB;
             if (probFour <= 10) {
-                line.delete_val()
+
             }
         }
     }
 
+
+    // count test
+    cout << line.getSize();
 
     return 0;
 }
