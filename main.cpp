@@ -207,10 +207,14 @@ public:
 int main() {
     // cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
     srand(time(0));
-    const int MINUTES = 20;
+    const int MAX_MINUTES = 20;
     DoublyLinkedList line;
-    for (int i = 1; i < MINUTES; ++i) {
-        
+    int minute = 1;
+    cout << "Store opens: \n";
+    for (int minute = 1; minute <= MAX_MINUTES; ++minute) {
+        if (minute == 1) {
+
+        }
     }
 
 
