@@ -221,6 +221,14 @@ int main() {
     }
 
     vector<string> names;
+    string name;
+    while (getline(fileInput, name)) {
+        names.push_back(name);
+    }
+
+    for (auto& test : names) {
+        cout << test << '\n';
+    }
 
     cout << "Store opens: \n";
     for (int minute = 1; minute <= MAX_MINUTES; ++minute) {
