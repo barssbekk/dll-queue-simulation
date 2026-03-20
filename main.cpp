@@ -299,14 +299,15 @@ int main() {
             // 10%
             int probFour = rand() % MAX_PROB + MIN_PROB;
             if (probFour <= 10) {
-
+                if (line.getSize() > 0) {
+                    int positionToRemove = rand() % ()
+                }
             }
         }
     }
 
 
     // count test
-    cout << line.getSize();
 
     return 0;
 }
