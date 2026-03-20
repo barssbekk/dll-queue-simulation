@@ -277,12 +277,19 @@ int main() {
                 cout << '\t' << names.at(randNameIndex) << " joins the line\n";
             }
 
+            // 20%
             int probThree = rand() % MAX_PROB + MIN_PROB;
             if (probThree <= 20) {
                 const int index = line.getBack();
                 cout << '\t' << names.at(index) << " (at the rear) "
-                             << "left the line\n";
+                                                << "left the line\n";
+                line.pop_back();
+            }
 
+            // 10%
+            int probFour = rand() % MAX_PROB + MIN_PROB;
+            if (probFour <= 10) {
+                line.delete_val()
             }
         }
     }
