@@ -211,8 +211,7 @@ int main() {
     srand(time(0));
 
     const int MAX_MINUTES = 20;
-    const int MIN_NAME_INDEX = 0;
-    const int MAX_NAME_INDEX = 97;
+
 
     DoublyLinkedList line;
 
@@ -228,14 +227,23 @@ int main() {
         names.push_back(name);
     }
 
+    const int MIN_NAME_INDEX = 0;
+    const int MAX_NAME_INDEX = names.size() - 1;
+
     // value = rand() % (MAX-MIN+1) + MIN;
     // int randNameIndex = rand() % (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
 
 
     cout << "Store opens: \n";
     for (int minute = 1; minute <= MAX_MINUTES; ++minute) {
-        int randNameIndex = rand() % (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
-        cout << "Random names: " << names.at(randNameIndex) << '\n';
+        if (minute == 1) {
+            for (int i = 0; i < 5; ++i) {
+                int randNameIndex = rand() % (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
+                line.push_back(randNameIndex);
+            }
+        }
+        //line.push_back(randNameIndex);
+        // line.print();
     }
 
 
