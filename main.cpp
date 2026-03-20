@@ -207,7 +207,7 @@ public:
     }
 
     int getFront() {
-        if (!head) return 2;
+        if (!head) return -1;
         return head->data;
     }
 };
@@ -252,10 +252,13 @@ int main() {
             cout << "\tResulting line:\n";
             line.print(names);
         } else {
-            int prob = rand() % MAX_PROB + MIN_PROB;
             cout << "Time step #" << minute << ":\n";
-            if (prob <= 40) {
-                cout << '\t' << names.at(line.getFront()) << " is served\n";
+
+            int prob = rand() % MAX_PROB + MIN_PROB;
+
+            if (prob <= 40 && line.getFront() > -1) {
+                const int index = line.getFront();
+                cout << '\t' << names.at(index) << " is served\n";
                 line.pop_front();
             }
             cout << "\tResulting line:\n";
