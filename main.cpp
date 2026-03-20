@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <vector>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -207,9 +208,13 @@ public:
 int main() {
     // cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
     srand(time(0));
+
     const int MAX_MINUTES = 20;
+
     DoublyLinkedList line;
-    int minute = 1;
+
+    vector<string> names;
+
     cout << "Store opens: \n";
     for (int minute = 1; minute <= MAX_MINUTES; ++minute) {
         if (minute == 1) {
