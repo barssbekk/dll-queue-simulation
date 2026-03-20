@@ -210,6 +210,11 @@ public:
         if (!head) return -1;
         return head->data;
     }
+
+    int getBack() {
+        if (!tail) return -1;
+        return tail->data;
+    }
 };
 
 int main() {
@@ -254,15 +259,31 @@ int main() {
         } else {
             cout << "Time step #" << minute << ":\n";
 
-            int prob = rand() % MAX_PROB + MIN_PROB;
-
-            if (prob <= 40 && line.getFront() > -1) {
+            int probOne = rand() % MAX_PROB + MIN_PROB;
+            // 40% serve
+            if (probOne <= 40 && line.getFront() > -1) {
                 const int index = line.getFront();
                 cout << '\t' << names.at(index) << " is served\n";
                 line.pop_front();
             }
             cout << "\tResulting line:\n";
             line.print(names);
+
+            // 60%
+            int probTwo = rand() % MAX_PROB + MIN_PROB;
+            if (probTwo <= 60) {
+                int randNameIndex = rand() % (MAX_NAME_INDEX - MIN_NAME_INDEX + 1) + MIN_NAME_INDEX;
+                line.push_back(randNameIndex);
+                cout << '\t' << names.at(randNameIndex) << " joins the line\n";
+            }
+
+            int probThree = rand() % MAX_PROB + MIN_PROB;
+            if (probThree <= 20) {
+                const int index = line.getBack();
+                cout << '\t' << names.at(index) << " (at the rear) "
+                             << "left the line\n";
+
+            }
         }
     }
 
